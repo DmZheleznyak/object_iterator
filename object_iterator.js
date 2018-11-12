@@ -1,14 +1,17 @@
-var a = { 0:0, 1:1, 3:3 }
+var a = { 0:0, 1:1, 2:2 }
 
-var iter = function () {
-  var _this = this;
-  var keys = null;
-  var index = 0;
+var iter = function () { //[Symbol.iterator] это function которая возвращает object
+	var _this = this;
+// сохраняем this в переменную	
+	var keys = null;
+// ставим keys null для будущей проверки	
+	var index = 0;
+// 	
   
-  return {
-    next: function () {
-      if (keys === null) {
-        keys = Object.keys(_this).sort();
+  return { // возвращает object
+    next: function () { // в котором есть метод
+      if (keys === null) {	//
+        keys = Object.keys(_this).sort( ( a,b ) => a - b );
       }
       
       return {
