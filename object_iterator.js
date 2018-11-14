@@ -1,6 +1,7 @@
 var a = { 0:0, 1:1, 2:2 }
 
-var iter = function () { //[Symbol.iterator] это function которая возвращает object
+a[Symbol.iterator] = function () { 
+// [Symbol.iterator] это function которая возвращает object
 // создаём переменную в которой сохраняется индекс
 // для сохранения при каждом вызове метода next()  
 	var index = 0;
@@ -9,11 +10,12 @@ var iter = function () { //[Symbol.iterator] это function которая во
 // в нашем случае это обьект a
 	var arrOfKeys = Object.keys(this)
   
-  return { // возвращаем object
-    next: function () { // в котором есть метод
+  return { 								 // возвращаем object
+    next: function () { 	// в котором есть метод
 // при каждом шаге итерации возвращается объект
 // с полем value в котором значение массива
-// а также с полем done, в котором проверка - выпелнен ли полный обход по всем значениям текущего массива
+// а также с полем done, в котором проверка 
+// - выпелнен ли полный обход по всем значениям текущего массива
 
       return {
 // в поле value попадает текущее(index) значение(arrOfKeys[index]) массива(arrOfKeys)
@@ -26,8 +28,6 @@ var iter = function () { //[Symbol.iterator] это function которая во
     }
   }
 }
-
-a[Symbol.iterator] = iter
 
 var b = [...a]
 console.log(b) // [ 0,1,2 ]
